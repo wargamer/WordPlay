@@ -1,0 +1,48 @@
+﻿<Window x:Class="WordPlay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WordPlay" MinHeight="350" MinWidth="435" Height="350" Width="435">
+    <Grid Loaded="Grid_Loaded" Width="405" HorizontalAlignment="Left">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" >
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="400">
+                <Label Content="Language: " Width="100" />
+                <ComboBox Height="25" Name="lbLanguageSelection" Width="280" SelectionChanged="lbLanguageSelection_SelectionChanged" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="400">
+                <Label Content="WordList: " Width="100" />
+                <ComboBox Height="25" Name="lbWordListSelection" Width="280" SelectionChanged="lbWordListSelection_SelectionChanged" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="400">
+                <Label Content="Direction: " Width="100" />
+                <ComboBox Height="25" Name="lbDirectionSelection" Width="280" SelectionChanged="lbDirectionSelection_SelectionChanged" ToolTip="Select the Question type" SelectedIndex="0">
+                    <ComboBoxItem Content="Local -> Native" Tag="Normal" ToolTip="Questions will be in english" />
+                    <ComboBoxItem Content="Native -> Local" Tag="Reverse" ToolTip="Questions will be in the selected language" />
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="400" Margin="5,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="400">
+                <Label Content="Question" Width="100" />
+                <TextBox Width="300" Name="tbQuestion" IsReadOnly="True" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="400">
+                <Label Content="Your Answer" Width="100" />
+                <TextBox Width="300" Name="tbYourAnswer" KeyUp="tbAnswer_KeyUp" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="400">
+                <Label Content="The Answer" Width="100" />
+                <TextBox Width="300" Name="tbTheAnswer" IsReadOnly="True" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="400">
+                <Label Content="Score:" Width="100" />
+                <Label Content="" Width="300" Name="lblScore" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10" Width="400">
+                <Button Content="Check" Margin="70,0,0,0" Name="btnCheck" Click="btnCheck_Click" Width="100" />
+                <Button Content="Next" Margin="70,0,0,0" Name="btnNext" Click="btnNext_Click" Width="100" />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
