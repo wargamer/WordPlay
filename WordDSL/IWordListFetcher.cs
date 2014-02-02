@@ -3,6 +3,9 @@
     using System.Collections.Generic;
     using Model;
 
+    /// <summary>
+    /// Word list fetcher interface
+    /// </summary>
     public interface IWordListFetcher
     {
         /// <summary>

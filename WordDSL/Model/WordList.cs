@@ -9,6 +9,11 @@
     /// </summary>
     public class WordList
     {   
+        /// <summary>
+        /// Constructs a wordlist based on a name and URL
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="url"></param>
         public WordList(string name, string url)
         {
             Name = name;
@@ -18,14 +23,29 @@
 
         private static DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         
+        /// <summary>
+        /// Name of the wordlist
+        /// </summary>
         public string Name { get; private set; }
 
+        /// <summary>
+        /// URL pointing to the wordlist
+        /// </summary>
         public string URL { get; private set; }
 
+        /// <summary>
+        /// List of words
+        /// </summary>
         public IList<Word> Words { get; private set; }
 
+        /// <summary>
+        /// Word that was last returned by GetNextWord
+        /// </summary>
         public Word CurrentWord { get; private set; }
 
+        /// <summary>
+        /// Current word index
+        /// </summary>
         public int CurrentWordNumber { get; private set; }
         
         /// <summary>
@@ -33,6 +53,7 @@
         /// </summary>
         private IEnumerator<Word> _theEnumerator;
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return Name;

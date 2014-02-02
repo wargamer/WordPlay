@@ -80,9 +80,19 @@
         }
     }
 
+    /// <summary>
+    /// Word Direction enum, determines whether the user is asked to translate
+    /// Local words to Native or the other way around
+    /// </summary>
     public enum WordDirection
     {
-        Normal, // Local -> Native
-        Reverse, // Native -> Local
+        /// <summary>
+        /// Local -> Native
+        /// </summary>
+        Normal,
+        /// <summary>
+        /// Native -> Local
+        /// </summary>
+        Reverse,
     };
 }

@@ -6,6 +6,9 @@
     using HtmlAgilityPack;
     using Model;
 
+    /// <summary>
+    /// An implementation of IWordListFetcher which pulls wordlists from the Byki website
+    /// </summary>
     public class BykiWordListFetcher : IWordListFetcher
     {
         private const string BaseURL = "http://www.byki.com";
@@ -23,6 +26,7 @@
             return subject.Replace("`", "'");
         }
 
+        /// <inheritdoc />
         public IEnumerable<string> GetAvailableLanguages()
         {
             HtmlDocument document = HTMLWeb.Load(LanguageListURL);
@@ -35,6 +39,7 @@
                 yield return node.InnerText;
         }
 
+        /// <inheritdoc />
         public IEnumerable<WordList> GetAvailableLists(string language)
         {
             if (language == null)
@@ -53,6 +58,7 @@
             }
         }
 
+        /// <inheritdoc />
         public bool GetWordsForList(WordList list)
         {
             if (list == null)

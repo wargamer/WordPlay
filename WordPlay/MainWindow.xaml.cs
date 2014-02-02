@@ -19,10 +19,18 @@
         private WordManager _wordManager;
         private Score _score = new Score();
 
+        /// <summary>
+        /// Mainwindow constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+            lbSourceSelection.ItemsSource = new string[] { "Byki", "Textfiles" };
+            lbSourceSelection.SelectionChanged -= lbSourceSelection_SelectionChanged;
+            lbSourceSelection.SelectedValue = "Byki";
+            lbSourceSelection.SelectionChanged += lbSourceSelection_SelectionChanged;
         }
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -205,6 +213,22 @@
             }
         }
 
+        private void lbSourceSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (lbSourceSelection.SelectedValue.ToString())
+            {
+                case "Byki":
+                    _fetcher = new BykiWordListFetcher();
+                break;    
+                case "Textfiles":
+                    _fetcher = new TextFileWordListFetcher();
+                break;
+            }
+
+            Grid_Loaded(null, null);
+            _score.Reset();
+        }
+
         private class Score
         {
             public Score()
@@ -221,6 +245,6 @@
             public void AddWrong() { Wrong++; }
 
             public void Reset() { Correct = 0; Wrong = 0; }
-        }
+        }        
     }
 }
